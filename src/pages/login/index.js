@@ -2,7 +2,8 @@
  * title: 登录
  */
 import React from 'react';
-import login from './sevices/login';
+import { login } from './sevices/login';
+import router from 'umi/router';
 import { Layout, Icon, Input, Form, Button } from 'antd';
 import styles from './index.scss';
 
@@ -15,9 +16,7 @@ const index = props => {
   const handleSubmit = () => {
     validateFields((err, values) => {
       if (!err) {
-        login(values)
-          .then(res => res.json())
-          .then(data => console.log(data));
+        login(values).then(data => router.push('/'));
         // console.log(values);
       }
     });
